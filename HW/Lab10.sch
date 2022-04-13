@@ -1365,14 +1365,6 @@ high speed (Philips) 1N914</description>
 <wire x1="187.96" y1="124.46" x2="187.96" y2="152.4" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="M0_PWM0" class="0">
-<segment>
-<pinref part="U$1" gate="G$2" pin="PB2"/>
-<wire x1="104.14" y1="127" x2="124.46" y2="127" width="0.1524" layer="91"/>
-<label x="109.22" y="127" size="1.778" layer="95"/>
-<pinref part="RB" gate="G$1" pin="1"/>
-</segment>
-</net>
 <net name="TACH" class="0">
 <segment>
 <pinref part="U$1" gate="G$2" pin="PB4"/>
@@ -1424,6 +1416,16 @@ high speed (Philips) 1N914</description>
 <wire x1="182.88" y1="139.7" x2="182.88" y2="129.54" width="0.1524" layer="91"/>
 <junction x="160.02" y="139.7"/>
 <wire x1="160.02" y1="149.86" x2="160.02" y2="139.7" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="M0PWM0" class="0">
+<segment>
+<pinref part="U$1" gate="G$2" pin="PB6"/>
+<wire x1="104.14" y1="137.16" x2="121.92" y2="137.16" width="0.1524" layer="91"/>
+<pinref part="RB" gate="G$1" pin="1"/>
+<wire x1="121.92" y1="137.16" x2="121.92" y2="127" width="0.1524" layer="91"/>
+<wire x1="121.92" y1="127" x2="124.46" y2="127" width="0.1524" layer="91"/>
+<label x="109.22" y="137.16" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
