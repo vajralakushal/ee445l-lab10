@@ -26,10 +26,10 @@
 
 // external signal connected to PB6 (T0CCP0) (trigger on rising edge)
 #include <stdint.h>
-#include "../inc/tm4c123gh6pm.h"
-#include "../inc/PLL.h"
-#include "../inc/CortexM.h"
-#include "../inc/LaunchPad.h"
+#include "./inc/tm4c123gh6pm.h"
+#include "./inc/PLL.h"
+#include "./inc/CortexM.h"
+#include "./inc/LaunchPad.h"
 
 uint32_t PW;                // 24 bits, 12.5 ns units 
 int Done;                   // set each falling
