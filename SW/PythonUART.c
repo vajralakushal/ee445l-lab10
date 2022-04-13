@@ -67,36 +67,37 @@ void PythonUART_Init(void){
   Flag = 0;
 	desired_rps = 0;
 	cmd = '~';
-	i = -1;
-	led = -1;
-	data = -1;
-	Timer2A_Init(User_Input, 1000, 2);	//NOT ACCURATE PERIOD OR PRIORITY
+	i = 0;
+	led = 0;
+	data = 0;
+	Timer2A_Init(User_In, 1000, 2);	//NOT ACCURATE PERIOD OR PRIORITY
 }
 	
 //user will input stuff via keyboard and that data will be sent to LCD and Tach
-void User_Input(void){
-    cmd = UART_InCharNonBlock();
-		
-    if(cmd == 'L'){
-      led = UART_InUDec(); // CR terminated
-      LaunchPad_Output(led);
-    }
-    if(cmd == 'l'){
-      LaunchPad_Output(0);
-    }
-    if(cmd == 'R'){
-      numDataPoints = 0;
-      Flag = 0;
-      SysTick_Init(8000000); // 10 Hz
-    }
-    if(Flag){
-      Flag = 0; // clear semaphore
-      for(i=0; i<SIZE; i++){
-        UART_OutUDec(buffer[i]);
-        UART_OutChar(' ');
-      }
-      UART_OutChar(LF);
-    }
+void User_In(void){
+// something like this code from Valvano. Abstract out sending the K, I, and desired speed	
+//    cmd = UART_InCharNonBlock();
+//		
+//    if(cmd == 'L'){
+//      led = UART_InUDec(); // CR terminated
+//      LaunchPad_Output(led);
+//    }
+//    if(cmd == 'l'){
+//      LaunchPad_Output(0);
+//    }
+//    if(cmd == 'R'){
+//      numDataPoints = 0;
+//      Flag = 0;
+//      SysTick_Init(8000000); // 10 Hz
+//    }
+//    if(Flag){
+//      Flag = 0; // clear semaphore
+//      for(i=0; i<SIZE; i++){
+//        UART_OutUDec(buffer[i]);
+//        UART_OutChar(' ');
+//      }
+//      UART_OutChar(LF);
+//    }
 }
 
 void SysTick_Handler(void){

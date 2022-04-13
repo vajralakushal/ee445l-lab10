@@ -33,7 +33,8 @@
 #include "./inc/PWM.h"
 #include "Tach.h"
 
-uint32_t actual_frequency;  // 24 bits, 12.5 ns units 
+uint32_t actual_frequency;  // 24 bits, 12.5 ns units
+uint32_t actual_rps;
 int Done;                   // mailbox status set each falling
 int Count;									// after a certain count value, motor has stopped rotating
 int static First;						// Timer0A first edge, 12.5ns
@@ -86,6 +87,6 @@ void Calculate_Error(uint32_t desired_rps){
 }
 
 void Calculate_RPS(void){
-	// rps = (1 / (actual_frequency * 12.5 / (10^9)))
+	// actual_rps = (1 / (actual_frequency * 12.5 / (10^9)))
 }
 
