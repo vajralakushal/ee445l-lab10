@@ -30,17 +30,20 @@
 #include "./inc/PLL.h"
 #include "./inc/CortexM.h"
 #include "./inc/LaunchPad.h"
+#include "./inc/PWM.h"
 
 uint32_t PW;                // 24 bits, 12.5 ns units 
-int Done;                   // set each falling
+int Done;                   // mailbox status set each falling
+int Count;									// after a certain count value, motor has stopped rotating
+int static First;						// Timer0A first edge, 12.5ns
 void PWMeasure2_Init(void){ // TM4C123 code
   SYSCTL_RCGCTIMER_R |= 0x01;      // activate timer0
   SYSCTL_RCGCGPIO_R |= 0x02;       // activate port B
   Done = 0;                        // allow time to finish activating
-  GPIO_PORTB_DIR_R &= ~0xC0;       // make PB6, PB7 inputs
-  GPIO_PORTB_DEN_R |= 0xC0;        // enable digital PB6, PB7
-  GPIO_PORTB_AFSEL_R |= 0xC0;      // enable alt funct on PB6, PB7
-  GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0x00FFFFFF)+0x77000000;
+  GPIO_PORTB_DIR_R &= ~0x10;       // make PB4 input
+  GPIO_PORTB_DEN_R |= 0x10;        // enable digital PB4
+  GPIO_PORTB_AFSEL_R |= 0x10;      // enable alt funct on PB4
+  GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0x00FFFFFF)+0x77000000;	//some PWM code
   TIMER0_CTL_R &= ~0x00000101;     // disable timers 0A and 0B
   TIMER0_CFG_R = 0x00000004;       // configure for 16-bit timer mode
   // **** timer0A initialization ****
@@ -66,17 +69,21 @@ void Timer0A_Handler(void){
   PF2 = PF2^0x04;  // toggle PF2
   PF2 = PF2^0x04;  // toggle PF2
   TIMER0_ICR_R = 0x00000004;  // acknowledge timer0A capture flag
-  PW = (TIMER0_TBR_R-TIMER0_TAR_R)&0x00FFFFFF;// from rise to fall
+//  PW = (TIMER0_TBR_R-TIMER0_TAR_R)&0x00FFFFFF;// from rise to fall
+  PW = (First - TIMER0_TAR_R)&0x00FFFFFF;// from rise to fall
+	First = TIMER0_TAR_R;
   Done = 1;
+	Count = 0;
   PF2 = PF2^0x04;  // toggle PF2
 }
                       
 
 //debug code
 int main(void){           
-  PLL_Init(Bus80MHz);     // 80 MHz clock
-  LaunchPad_Init();       // activate port F
-  PWMeasure2_Init();      // initialize 24-bit timer0A in capture mode
+  PLL_Init(Bus80MHz);     	// 80 MHz clock
+  LaunchPad_Init();       	// activate port F
+	PWM0A_Init(40000, 30000);	// 1000Hz, 75% duty cycle (period is 1ms and values are high from 300 to 39900)
+  PWMeasure2_Init();      	// initialize 24-bit timer0A in capture mode
   EnableInterrupts();
   while(1){
     WaitForInterrupt();
