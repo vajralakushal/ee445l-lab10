@@ -31,6 +31,7 @@
 #include "./inc/CortexM.h"
 #include "./inc/LaunchPad.h"
 #include "./inc/PWM.h"
+#include "PulseWidthMeasure.h"
 
 uint32_t PW;                // 24 bits, 12.5 ns units 
 int Done;                   // mailbox status set each falling
