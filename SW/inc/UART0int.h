@@ -42,7 +42,7 @@
 // 8 bit word length, no parity bits, one stop bit, FIFOs enabled
 // Input: none
 // Output: none
-void UART_Init(void);
+void UART_Output_Init(void);
 
 //------------UART_InChar------------
 // Wait for new serial port input

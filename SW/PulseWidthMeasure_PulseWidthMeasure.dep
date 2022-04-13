@@ -1,0 +1,82 @@
+Dependencies for Project 'PulseWidthMeasure', Target 'PulseWidthMeasure': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (.\startup.s)(0x62565F39)(--cpu Cortex-M4 -g --apcs=interwork -I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123--pd "__UVISION_VERSION SETA 536" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1" --pd "_RTE_ SETA 1"--list .\startup.lst --xref -o .\startup.o --depend .\startup.d)
+F (.\inc\PLL.c)(0x62565F39)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\pll.o --omf_browse .\pll.crf --depend .\pll.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (inc\../inc/PLL.h)(0x62565F39)
+I (inc\../inc/tm4c123gh6pm.h)(0x62565F39)
+F (.\inc\LaunchPad.c)(0x62565F39)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\launchpad.o --omf_browse .\launchpad.crf --depend .\launchpad.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (inc\../inc/LaunchPad.h)(0x62565F39)
+I (inc\../inc/tm4c123gh6pm.h)(0x62565F39)
+I (inc\../inc/CortexM.h)(0x62565F39)
+F (.\Lab10.c)(0x6256703A)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\lab10.o --omf_browse .\lab10.crf --depend .\lab10.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025E85C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (./inc/tm4c123gh6pm.h)(0x62565F39)
+I (./inc/LaunchPad.h)(0x62565F39)
+I (./inc/PLL.h)(0x62565F39)
+I (./inc/CortexM.h)(0x62565F39)
+I (Tach.h)(0x62565F39)
+I (LCD.h)(0x62566BFB)
+I (Motor.h)(0x62566785)
+I (PythonUART.h)(0x625679B5)
+F (.\LCD.c)(0x62566F26)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\lcd.o --omf_browse .\lcd.crf --depend .\lcd.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025E85C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (./inc/tm4c123gh6pm.h)(0x62565F39)
+I (./inc/ST7735.h)(0x62565F39)
+I (./inc/Timer1A.h)(0x62565F39)
+I (LCD.h)(0x62566BFB)
+F (.\Motor.c)(0x62566773)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\motor.o --omf_browse .\motor.crf --depend .\motor.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x6025E85C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (./inc/tm4c123gh6pm.h)(0x62565F39)
+I (Motor.h)(0x62566785)
+I (./inc/PWM.h)(0x62565F39)
+F (.\PythonUART.c)(0x62567A06)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\pythonuart.o --omf_browse .\pythonuart.crf --depend .\pythonuart.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (./inc/PLL.h)(0x62565F39)
+I (./inc/CortexM.h)(0x62565F39)
+I (./inc/UART0int.h)(0x625677DF)
+I (./inc/LaunchPad.h)(0x62565F39)
+I (./inc/SysTickInts.h)(0x62565F39)
+I (./inc/tm4c123gh6pm.h)(0x62565F39)
+I (./inc/Timer2A.h)(0x62565F39)
+I (PythonUART.h)(0x625679B5)
+F (.\Tach.c)(0x6256755D)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\tach.o --omf_browse .\tach.crf --depend .\tach.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (./inc/tm4c123gh6pm.h)(0x62565F39)
+I (./inc/PLL.h)(0x62565F39)
+I (./inc/CortexM.h)(0x62565F39)
+I (./inc/LaunchPad.h)(0x62565F39)
+I (./inc/PWM.h)(0x62565F39)
+I (Tach.h)(0x62565F39)
+F (.\inc\PWM.c)(0x62565F39)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\pwm.o --omf_browse .\pwm.crf --depend .\pwm.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (inc\tm4c123gh6pm.h)(0x62565F39)
+F (.\inc\ST7735.c)(0x62565F39)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\st7735.o --omf_browse .\st7735.crf --depend .\st7735.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025E854)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x6025E854)
+I (inc\ST7735.h)(0x62565F39)
+I (inc\../inc/tm4c123gh6pm.h)(0x62565F39)
+F (.\inc\Timer1A.c)(0x62565F39)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\timer1a.o --omf_browse .\timer1a.crf --depend .\timer1a.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (inc\../inc/tm4c123gh6pm.h)(0x62565F39)
+F (.\inc\UART0int.c)(0x62567838)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\uart0int.o --omf_browse .\uart0int.crf --depend .\uart0int.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6025E854)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6025E85E)
+I (inc\../inc/tm4c123gh6pm.h)(0x62565F39)
+I (inc\../inc/CortexM.h)(0x62565F39)
+I (inc\../inc/FIFO.h)(0x62565F39)
+I (inc\../inc/UART0int.h)(0x625677DF)
+F (.\inc\SysTickInts.c)(0x62565F39)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\systickints.o --omf_browse .\systickints.crf --depend .\systickints.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (inc\../inc/tm4c123gh6pm.h)(0x62565F39)
+I (inc\../inc/CortexM.h)(0x62565F39)
+I (inc\../inc/SysTickInts.h)(0x62565F39)
+F (.\inc\Timer2A.c)(0x62565F39)(-c --cpu Cortex-M4 -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_PulseWidthMeasure-IC:\Users\18303\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\18303\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="536" -D_RTE_ -DTM4C123GH6PM -D_RTE_ -Drvmdk -DPART_LM4F120H5QR-o .\timer2a.o --omf_browse .\timer2a.crf --depend .\timer2a.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6025E85E)
+I (inc\../inc/tm4c123gh6pm.h)(0x62565F39)

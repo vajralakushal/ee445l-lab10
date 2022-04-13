@@ -1,0 +1,11 @@
+.\lab10.o: Lab10.c
+.\lab10.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\lab10.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\lab10.o: ./inc/tm4c123gh6pm.h
+.\lab10.o: ./inc/LaunchPad.h
+.\lab10.o: ./inc/PLL.h
+.\lab10.o: ./inc/CortexM.h
+.\lab10.o: Tach.h
+.\lab10.o: LCD.h
+.\lab10.o: Motor.h
+.\lab10.o: PythonUART.h

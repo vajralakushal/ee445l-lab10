@@ -37,6 +37,7 @@ uint32_t PW;                // 24 bits, 12.5 ns units
 int Done;                   // mailbox status set each falling
 int Count;									// after a certain count value, motor has stopped rotating
 int static First;						// Timer0A first edge, 12.5ns
+
 void PWMeasure2_Init(void){ // TM4C123 code
   SYSCTL_RCGCTIMER_R |= 0x01;      // activate timer0
   SYSCTL_RCGCGPIO_R |= 0x02;       // activate port B
@@ -66,27 +67,20 @@ void PWMeasure2_Init(void){ // TM4C123 code
   NVIC_EN0_R = 1<<19;              // enable interrupt 19 in NVIC
   EnableInterrupts();
 }
+
 void Timer0A_Handler(void){
   PF2 = PF2^0x04;  // toggle PF2
   PF2 = PF2^0x04;  // toggle PF2
   TIMER0_ICR_R = 0x00000004;  // acknowledge timer0A capture flag
-//  PW = (TIMER0_TBR_R-TIMER0_TAR_R)&0x00FFFFFF;// from rise to fall
+  //PW = (TIMER0_TBR_R-TIMER0_TAR_R)&0x00FFFFFF;// from rise to fall
   PW = (First - TIMER0_TAR_R)&0x00FFFFFF;// from rise to fall
 	First = TIMER0_TAR_R;
   Done = 1;
 	Count = 0;
   PF2 = PF2^0x04;  // toggle PF2
 }
-                      
 
-//debug code
-int main(void){           
-  PLL_Init(Bus80MHz);     	// 80 MHz clock
-  LaunchPad_Init();       	// activate port F
-	PWM0A_Init(40000, 30000);	// 1000Hz, 75% duty cycle (period is 1ms and values are high from 300 to 39900)
-  PWMeasure2_Init();      	// initialize 24-bit timer0A in capture mode
-  EnableInterrupts();
-  while(1){
-    WaitForInterrupt();
-  }
+uint32_t Get_Freq(void){
+	return PW;
 }
+        

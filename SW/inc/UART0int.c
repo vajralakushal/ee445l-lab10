@@ -426,18 +426,18 @@ char character;
 
 
 // this is used for printf to output to the usb uart
-int fputc(int ch, FILE *f){
+int filePutC(int ch, FILE *f){
   UART_OutChar(ch);
   return 1;
 }
 // Get input from UART, echo
-int fgetc (FILE *f){
+int fileGetC (FILE *f){
   char ch = UART_InChar();  // receive from keyboard
   UART_OutChar(ch);            // echo
   return ch;
 }
 // Function called when file error occurs.
-int ferror(FILE *f){
+int fileError(FILE *f){
   /* Your implementation of ferror */
   return EOF;
 }
@@ -498,7 +498,7 @@ void Output_Init(void){int ret_val; FILE *fptr;
 // 8 bit word length, no parity bits, one stop bit, FIFOs enabled
 // Input: none
 // Output: none
-void Output_Init(void){
+void UART_Output_Init(void){
   UART_Init();
 }
 #endif
