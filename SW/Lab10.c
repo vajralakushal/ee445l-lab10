@@ -7,17 +7,24 @@
 #include "./inc/LaunchPad.h"
 #include "./inc/PLL.h"
 #include "./inc/CortexM.h"
+#include "./inc/Texas.h"
 #include "Tach.h"
 #include "LCD.h"
 #include "Motor.h"
 #include "PythonUART.h"
+#include "PIController.h"
 
 int main(void){           
   PLL_Init(Bus80MHz);   // 80 MHz clock
   LaunchPad_Init();     // activate port F
-	LCD_Init();						
-	Motor_Init(0);				// 0Hz
-  Tach_Init();      		// initialize 24-bit timer0A in capture mode
+	TExaS_Init(LOGICANALYZERB);
+	// initializations not necessarily in the right order
+//	LCD_Init();						
+	Motor_Init(40000);				// 0Hz
+//  Tach_Init();      		// initialize 24-bit timer0A in capture mode
+//	PythonUART_Init();
+//	PIController_Init();
+	
   EnableInterrupts();
   while(1){
     WaitForInterrupt();

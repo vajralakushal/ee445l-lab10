@@ -69,32 +69,32 @@ AddIndexFifo(Tx, 1024, char, FIFOSUCCESS, FIFOFAIL)
 
 // Initialize UART0
 // Baud rate is 115200 bits/sec
-void UART_Init(void){
-  SYSCTL_RCGCUART_R |= 0x01;            // activate UART0
-  SYSCTL_RCGCGPIO_R |= 0x01;            // activate port A
-  RxFifo_Init();                        // initialize empty FIFOs
-  TxFifo_Init();
-  UART0_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
-  UART0_IBRD_R = 43;                    // IBRD = int(80,000,000 / (16 * 115,200)) = int(43.403)
-  UART0_FBRD_R = 26;                    // FBRD = round(0.4028 * 64 ) = 26
-                                        // 8 bit word length (no parity bits, one stop bit, FIFOs)
-  UART0_LCRH_R = (UART_LCRH_WLEN_8|UART_LCRH_FEN);
-  UART0_IFLS_R &= ~0x3F;                // clear TX and RX interrupt FIFO level fields
-                                        // configure interrupt for TX FIFO <= 1/8 full
-                                        // configure interrupt for RX FIFO >= 1/8 full
-  UART0_IFLS_R += (UART_IFLS_TX1_8|UART_IFLS_RX1_8);
-                                        // enable TX and RX FIFO interrupts and RX time-out interrupt
-  UART0_IM_R |= (UART_IM_RXIM|UART_IM_TXIM|UART_IM_RTIM);
-  UART0_CTL_R |= 0x301;                 // enable UART
-  GPIO_PORTA_AFSEL_R |= 0x03;           // enable alt funct on PA1-0
-  GPIO_PORTA_DEN_R |= 0x03;             // enable digital I/O on PA1-0
-                                        // configure PA1-0 as UART
-  GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R&0xFFFFFF00)+0x00000011;
-  GPIO_PORTA_AMSEL_R = 0;               // disable analog functionality on PA
-                                        // UART0=priority 2
-  NVIC_PRI1_R = (NVIC_PRI1_R&0xFFFF00FF)|0x00004000; // bits 13-15
-  NVIC_EN0_R = NVIC_EN0_INT5;           // enable interrupt 5 in NVIC
-}
+//void UART_Init(void){
+//  SYSCTL_RCGCUART_R |= 0x01;            // activate UART0
+//  SYSCTL_RCGCGPIO_R |= 0x01;            // activate port A
+//  RxFifo_Init();                        // initialize empty FIFOs
+//  TxFifo_Init();
+//  UART0_CTL_R &= ~UART_CTL_UARTEN;      // disable UART
+//  UART0_IBRD_R = 43;                    // IBRD = int(80,000,000 / (16 * 115,200)) = int(43.403)
+//  UART0_FBRD_R = 26;                    // FBRD = round(0.4028 * 64 ) = 26
+//                                        // 8 bit word length (no parity bits, one stop bit, FIFOs)
+//  UART0_LCRH_R = (UART_LCRH_WLEN_8|UART_LCRH_FEN);
+//  UART0_IFLS_R &= ~0x3F;                // clear TX and RX interrupt FIFO level fields
+//                                        // configure interrupt for TX FIFO <= 1/8 full
+//                                        // configure interrupt for RX FIFO >= 1/8 full
+//  UART0_IFLS_R += (UART_IFLS_TX1_8|UART_IFLS_RX1_8);
+//                                        // enable TX and RX FIFO interrupts and RX time-out interrupt
+//  UART0_IM_R |= (UART_IM_RXIM|UART_IM_TXIM|UART_IM_RTIM);
+//  UART0_CTL_R |= 0x301;                 // enable UART
+//  GPIO_PORTA_AFSEL_R |= 0x03;           // enable alt funct on PA1-0
+//  GPIO_PORTA_DEN_R |= 0x03;             // enable digital I/O on PA1-0
+//                                        // configure PA1-0 as UART
+//  GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R&0xFFFFFF00)+0x00000011;
+//  GPIO_PORTA_AMSEL_R = 0;               // disable analog functionality on PA
+//                                        // UART0=priority 2
+//  NVIC_PRI1_R = (NVIC_PRI1_R&0xFFFF00FF)|0x00004000; // bits 13-15
+//  NVIC_EN0_R = NVIC_EN0_INT5;           // enable interrupt 5 in NVIC
+//}
 // copy from hardware RX FIFO to software RX FIFO
 // stop when hardware RX FIFO is empty or software RX FIFO is full
 void static copyHardwareToSoftware(void){
@@ -498,8 +498,8 @@ void Output_Init(void){int ret_val; FILE *fptr;
 // 8 bit word length, no parity bits, one stop bit, FIFOs enabled
 // Input: none
 // Output: none
-void UART_Output_Init(void){
-  UART_Init();
-}
+//void UART_Output_Init(void){
+//  UART_Init();
+//}
 #endif
 

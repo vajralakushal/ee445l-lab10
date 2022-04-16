@@ -62,7 +62,7 @@ uint32_t led;  // value from Python script
 uint32_t buffer[SIZE];
 
 void PythonUART_Init(void){
-  UART_Output_Init();             
+//  UART_Output_Init();             
 	numDataPoints = 0;
   Flag = 0;
 	desired_rps = 0;

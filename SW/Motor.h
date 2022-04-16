@@ -8,7 +8,7 @@ void Motor_Init(uint32_t Hz);
 
 // Input:
 // The Motor module will receive desired rps/duty cycle from PIController module
-void Receive_RPS();
+void Receive_RPS(void);
 
 // Task:
 // The Motor module output new duty cycle to physical motor (via PWM folder in inc/)
