@@ -33,10 +33,12 @@
 #include "./inc/PWM.h"
 #include "Tach.h"
 
-uint32_t actual_frequency;  // 24 bits, 12.5 ns units
+uint32_t period;  // 24 bits, 12.5 ns units
+uint32_t frequency;
 uint32_t actual_rps;
 int Done;                   // mailbox status set each falling
 int Count;									// after a certain count value, motor has stopped rotating
+int MotorStop;
 int static First;						// Timer0A first edge, 12.5ns
 
 void Tach_Init(void){ // TM4C123 code
@@ -69,12 +71,13 @@ void Tach_Init(void){ // TM4C123 code
   EnableInterrupts();
 }
 
+//calculate distance between edges on tachometer
 void Timer0A_Handler(void){
   PF2 = PF2^0x04;  // toggle PF2
   PF2 = PF2^0x04;  // toggle PF2
   TIMER0_ICR_R = 0x00000004;  // acknowledge timer0A capture flag
   //PW = (TIMER0_TBR_R-TIMER0_TAR_R)&0x00FFFFFF;// from rise to fall
-  actual_frequency = (First - TIMER0_TAR_R)&0x00FFFFFF;// from rise to fall
+  period = (First - TIMER0_TAR_R)&0x00FFFFFF;// from rise to fall
 	Calculate_RPS();
 	First = TIMER0_TAR_R;
   Done = 1;
@@ -82,11 +85,22 @@ void Timer0A_Handler(void){
   PF2 = PF2^0x04;  // toggle PF2
 }
 
+//calculate how much time has passed since input capture read value
+void Timer0B_Handler(void){  
+	Count++;
+	if(Count == 1200){ //if been more than one second since capture, motor off 
+		MotorStop = 1;
+	}
+}
+
 void Calculate_Error(uint32_t desired_rps){
 	//calculate error based on actual and desired frequency/speed of motor
+	
 }
 
 void Calculate_RPS(void){
-	// actual_rps = (1 / (actual_frequency * 12.5 / (10^9)))
+	frequency = period*(12.5*(10^9));
+	actual_rps = (12)*frequency;  //12pulses/rotation x (k seconds/pulse)
+	frequency = 1/frequency;
 }
 

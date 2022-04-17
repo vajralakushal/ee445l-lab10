@@ -17,7 +17,7 @@
 int main(void){           
   PLL_Init(Bus80MHz);   // 80 MHz clock
   LaunchPad_Init();     // activate port F
-	TExaS_Init(LOGICANALYZERB);
+//	TExaS_Init(LOGICANALYZERB);
 	// initializations not necessarily in the right order
 //	LCD_Init();						
 	Motor_Init(40000);				// 0Hz
