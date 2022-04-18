@@ -17,11 +17,11 @@
 int main(void){           
   PLL_Init(Bus80MHz);   // 80 MHz clock
   LaunchPad_Init();     // activate port F
-//	TExaS_Init(LOGICANALYZERB);
+  TExaS_Init(SCOPE_PD2);
 	// initializations not necessarily in the right order
-//	LCD_Init();						
-	Motor_Init(40000);				// 0Hz
-//  Tach_Init();      		// initialize 24-bit timer0A in capture mode
+	LCD_Init();	
+  Tach_Init();      		// initialize 24-bit timer0A in capture mode
+	Motor_Init(40000);				// 1000Hz
 //	PythonUART_Init();
 //	PIController_Init();
 	

@@ -41,33 +41,54 @@ int Count;									// after a certain count value, motor has stopped rotating
 int MotorStop;
 int static First;						// Timer0A first edge, 12.5ns
 
+//void Tach_Init(void){ // TM4C123 code
+//  SYSCTL_RCGCTIMER_R |= 0x01;      // activate timer0
+//  SYSCTL_RCGCGPIO_R |= 0x02;       // activate port B
+//  Done = 0;                        // allow time to finish activating
+//  GPIO_PORTB_DIR_R &= ~0x10;       // make PB4 input
+//  GPIO_PORTB_DEN_R |= 0x10;        // enable digital PB4
+//  GPIO_PORTB_AFSEL_R |= 0x10;      // enable alt funct on PB4
+//  GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFF0FFFF)+0x00070000;	//some PWM code
+//  TIMER0_CTL_R &= ~0x00000101;     // disable timers 0A and 0B
+//  TIMER0_CFG_R = 0x00000004;       // configure for 16-bit timer mode
+//  // **** timer0A initialization ****
+//  TIMER0_TAMR_R = 0x00000007;
+//  TIMER0_CTL_R = (TIMER0_CTL_R&(~0x0C))+0x04; // falling edge
+//  TIMER0_TAILR_R = 0x0000FFFF;     // start value
+//  TIMER0_TAPR_R = 0xFF;            // activate prescale, creating 24-bit 
+//  TIMER0_IMR_R |= 0x00000004;      // enable capture match interrupt
+//  TIMER0_ICR_R = 0x00000004;       // clear timer0A capture match flag
+//  // **** timer0B initialization ****
+//  TIMER0_TBMR_R = 0x00000007;
+//  TIMER0_CTL_R = (TIMER0_CTL_R&(~0x0C00))+0x00; // rising edge
+//  TIMER0_TBILR_R = 0x0000FFFF;     // start value
+//  TIMER0_TBPR_R = 0xFF;            // activate prescale, creating 24-bit 
+//  TIMER0_IMR_R &= ~0x0700;         // disable all interrupts for timer0B
+//  TIMER0_CTL_R |= 0x00000101;      // enable timers 0A and 0B 
+//  // **** interrupt initialization ****
+//  NVIC_PRI4_R = (NVIC_PRI4_R&0x00FFFFFF)|0x10000000; // Timer0=priority 0
+//  NVIC_EN0_R = 1<<19;              // enable interrupt 19 in NVIC
+//  EnableInterrupts();
+//}
+
 void Tach_Init(void){ // TM4C123 code
   SYSCTL_RCGCTIMER_R |= 0x01;      // activate timer0
   SYSCTL_RCGCGPIO_R |= 0x02;       // activate port B
   Done = 0;                        // allow time to finish activating
-  GPIO_PORTB_DIR_R &= ~0x10;       // make PB4 input
   GPIO_PORTB_DEN_R |= 0x10;        // enable digital PB4
   GPIO_PORTB_AFSEL_R |= 0x10;      // enable alt funct on PB4
-  GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0x00FFFFFF)+0x77000000;	//some PWM code
+  GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFF0FFFF)+0x00070000;	//some PWM code
   TIMER0_CTL_R &= ~0x00000101;     // disable timers 0A and 0B
   TIMER0_CFG_R = 0x00000004;       // configure for 16-bit timer mode
   // **** timer0A initialization ****
   TIMER0_TAMR_R = 0x00000007;
-  TIMER0_CTL_R = (TIMER0_CTL_R&(~0x0C))+0x04; // falling edge
+  TIMER0_CTL_R &= ~(0x000C);
   TIMER0_TAILR_R = 0x0000FFFF;     // start value
-  TIMER0_TAPR_R = 0xFF;            // activate prescale, creating 24-bit 
   TIMER0_IMR_R |= 0x00000004;      // enable capture match interrupt
   TIMER0_ICR_R = 0x00000004;       // clear timer0A capture match flag
-  // **** timer0B initialization ****
-  TIMER0_TBMR_R = 0x00000007;
-  TIMER0_CTL_R = (TIMER0_CTL_R&(~0x0C00))+0x00; // rising edge
-  TIMER0_TBILR_R = 0x0000FFFF;     // start value
-  TIMER0_TBPR_R = 0xFF;            // activate prescale, creating 24-bit 
-  TIMER0_IMR_R &= ~0x0700;         // disable all interrupts for timer0B
-  TIMER0_CTL_R |= 0x00000101;      // enable timers 0A and 0B 
-  // **** interrupt initialization ****
-  NVIC_PRI4_R = (NVIC_PRI4_R&0x00FFFFFF)|0x40000000; // Timer0=priority 2
-  NVIC_EN0_R = 1<<19;              // enable interrupt 19 in NVIC
+  TIMER0_CTL_R |= 0x00000001;      // enable timers 0A and 0B 
+  NVIC_PRI4_R = (NVIC_PRI4_R&0x00FFFFFF)|0x10000000; // Timer0=priority 0
+  NVIC_EN0_R = 0x00080000;              // enable interrupt 19 in NVIC
   EnableInterrupts();
 }
 
@@ -100,7 +121,14 @@ void Calculate_Error(uint32_t desired_rps){
 
 void Calculate_RPS(void){
 	frequency = period*(12.5*(10^9));
-	actual_rps = (12)*frequency;  //12pulses/rotation x (k seconds/pulse)
+//	actual_rps = (12)*frequency;  //12pulses/rotation x (k seconds/pulse)
+	actual_rps = 999;
 	frequency = 1/frequency;
+	Send_RPS();
 }
+
+uint32_t Send_RPS(void){
+	return actual_rps;
+}
+
 
