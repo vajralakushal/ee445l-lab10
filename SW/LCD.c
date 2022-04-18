@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include "./inc/tm4c123gh6pm.h"
 #include "./inc/ST7735.h"
-#include "./inc/Timer1A.h"
+#include "./inc/Timer2A.h"
 #include "LCD.h"
 #include "Tach.h"
 
@@ -29,7 +29,7 @@ void LCD_Init(void){
   ST7735_OutString("Lab 10 Test");
 	
 	//use timer to check if values have changed. If so, reflect that on LCD
-	Timer1A_Init(Draw_Values, 80000000/1000, 1);
+	Timer2A_Init(Draw_Values, 80000000/1000, 1);
 }
 
 void Draw_Values(/*uint32_t rps, uint32_t e, uint32_t u*/void){
